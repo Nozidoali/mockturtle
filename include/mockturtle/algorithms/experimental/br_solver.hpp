@@ -32,12 +32,12 @@
 
 #pragma once
 
+#include "../../algorithms/simulation.hpp"
 #include "../../networks/aig.hpp"
 #include "../../networks/xag.hpp"
 #include "../../traits.hpp"
 #include "../../utils/index_list.hpp"
 #include "../../utils/node_map.hpp"
-#include "../../algorithms/simulation.hpp"
 #include "../resyn_engines/xag_resyn.hpp"
 #include <kitty/kitty.hpp>
 
@@ -50,7 +50,6 @@ namespace mockturtle::experimental
 
 struct br_solver_params
 {
-
 };
 
 struct br_solver_stats
@@ -97,7 +96,8 @@ private:
   {
     for ( uint32_t idx = 0; idx < targets.size(); ++idx )
     {
-      kitty::print_binary( targets[idx] & ~mask[idx] ); std::cout << "\n";
+      kitty::print_binary( targets[idx] & ~mask[idx] );
+      std::cout << "\n";
     }
   }
 
@@ -115,32 +115,35 @@ private:
         if ( kitty::get_bit( targets[i] & ~mask[i], offset ) == 1 )
         {
           bool val = ( i >> tid ) & 0b01;
-          if( temp_val && *temp_val != val )
+          if ( temp_val && *temp_val != val )
           {
             // mark as dont care
-            kitty::clear_bit( care_out[ tid ], offset );
+            kitty::clear_bit( care_out[tid], offset );
             temp_val = std::nullopt;
             break;
           }
-          temp_val = val;          
+          temp_val = val;
         }
       }
       if ( temp_val )
       {
-        kitty::set_bit( care_out[ tid ], offset );
+        kitty::set_bit( care_out[tid], offset );
         if ( *temp_val == 1 )
         {
-          kitty::set_bit( tt_out[ tid ], offset );
+          kitty::set_bit( tt_out[tid], offset );
         }
         if ( *temp_val == 0 )
         {
-          kitty::clear_bit( tt_out[ tid ], offset );
-        }        
+          kitty::clear_bit( tt_out[tid], offset );
+        }
       }
-
     }
-    std::cout << "TT = "; kitty::print_binary( tt_out[tid] ); std::cout << std::endl;
-    std::cout << "Care = "; kitty::print_binary( care_out[tid] ); std::cout << std::endl;
+    std::cout << "TT = ";
+    kitty::print_binary( tt_out[tid] );
+    std::cout << std::endl;
+    std::cout << "Care = ";
+    kitty::print_binary( care_out[tid] );
+    std::cout << std::endl;
   }
 
   void propagate_and_mask( uint32_t oid )
@@ -149,7 +152,7 @@ private:
     simulate_nodes<Ntk>( ntk, tts, sim, true );
     signal s = ntk.po_at( oid );
     node n = ntk.get_node( s );
-    const TT & tt = tts[n];
+    const TT& tt = tts[n];
     fmt::print( "[i] propagate PO {} = ", oid );
     kitty::print_binary( tt );
     std::cout << std::endl;
@@ -196,17 +199,18 @@ private:
     xag_resyn_decompose<TT, xag_resyn_static_params_for_sim_resub<Ntk>> engine( st );
 
     incomplete_node_map<TT, Ntk> tts( ntk )
-    simulate_nodes<Ntk>( ntk, tts, sim, false );
+        simulate_nodes<Ntk>( ntk, tts, sim, false );
     // TODO: collect more divisors
 
     fmt::print( "[i] solving output {} \n", tid );
     for ( auto div : divs )
     {
-      kitty::print_binary( tts[div] ); std::cout << std::endl;
+      kitty::print_binary( tts[div] );
+      std::cout << std::endl;
     }
     const std::optional<index_list_t> res = engine( tt_out[tid], care_out[tid], std::begin( divs ), std::end( divs ), tts );
     assert( res );
-    insert<false>( ntk, divs.begin(), divs.end(), *res, [&]( signal const& g ){
+    insert<false>( ntk, divs.begin(), divs.end(), *res, [&]( signal const& g ) {
       ntk.create_po( g );
     } );
     fmt::print( "[i] network has {} gates.\n", ntk.num_gates() );
@@ -230,7 +234,7 @@ public:
   br_solver()
   {
   }
-  std::optional<index_list_t> operator ()( std::vector<TT> const& _divs, std::vector<TT> const& _targets, uint32_t _max_cost = std::numeric_limits<uint32_t>::max() )
+  std::optional<index_list_t> operator()( std::vector<TT> const& _divs, std::vector<TT> const& _targets, uint32_t _max_cost = std::numeric_limits<uint32_t>::max() )
   {
     tt_size = _divs[0].num_bits();
     max_cost = _max_cost;
@@ -257,9 +261,10 @@ public:
 
     // initialize simulator
     sim = partial_simulator( tt_divs );
-    
+
     return br_naive();
   }
+
 private:
   uint32_t max_cost;
   uint32_t num_target;
