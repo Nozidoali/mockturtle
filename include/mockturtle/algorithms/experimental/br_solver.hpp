@@ -33,6 +33,7 @@
 #pragma once
 
 #include "../../algorithms/simulation.hpp"
+#include "../../algorithms/cleanup.hpp"
 #include "../../networks/aig.hpp"
 #include "../../networks/xag.hpp"
 #include "../../traits.hpp"
@@ -198,8 +199,8 @@ private:
     xag_resyn_stats st;
     xag_resyn_decompose<TT, xag_resyn_static_params_for_sim_resub<Ntk>> engine( st );
 
-    incomplete_node_map<TT, Ntk> tts( ntk )
-        simulate_nodes<Ntk>( ntk, tts, sim, false );
+    incomplete_node_map<TT, Ntk> tts( ntk );
+    simulate_nodes<Ntk>( ntk, tts, sim, false );
     // TODO: collect more divisors
 
     fmt::print( "[i] solving output {} \n", tid );
@@ -226,6 +227,7 @@ private:
       solve_single_output( tid );
       propagate_and_mask( tid );
     }
+    ntk = cleanup_dangling( ntk );
     encode( res, ntk );
     return res;
   }
