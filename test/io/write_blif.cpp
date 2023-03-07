@@ -353,6 +353,7 @@ TEST_CASE( "write a sequential k-LUT with a node driving both PO and RI (skip fe
   write_blif_params ps;
   ps.skip_feedthrough = false;
   write_blif( klut, out, ps );
+  write_blif( klut, "test.blif", ps );
 
   blif_read_after_write_test( klut );
 }

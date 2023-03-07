@@ -1,18 +1,22 @@
 #include <lorina/blif.hpp>
 #include <mockturtle/mockturtle.hpp>
 
+using namespace mockturtle;
 int main()
 {
-  mockturtle::names_view<mockturtle::sequential<mockturtle::klut_network>> klut;
-  const auto result = lorina::read_blif( "./error.blif", mockturtle::blif_reader( klut ) );
+  names_view<sequential<klut_network>> klut;
+  const auto result = lorina::read_blif( "./error.blif", blif_reader( klut ) );
   if ( result != lorina::return_code::success )
   {
     std::cout << "Read benchmark failed\n";
     return -1;
   }
-  mockturtle::mig_npn_resynthesis resyn;
-  mockturtle::names_view<mockturtle::sequential<mockturtle::mig_network>> named_dest;
-  mockturtle::node_resynthesis( named_dest, klut, resyn );
-  mockturtle::write_blif( named_dest, "output.blif" );
+  mig_npn_resynthesis resyn;
+  names_view<sequential<mig_network>> named_dest;
+  node_resynthesis( named_dest, klut, resyn );
+  named_dest = cleanup_dangling( named_dest );
+  write_blif_params ps;
+  ps.skip_feedthrough = false;
+  write_blif( named_dest, "output1.blif", ps );
   return 0;
 }
