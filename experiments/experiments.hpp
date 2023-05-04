@@ -191,6 +191,64 @@ public:
     os << data_.dump( 2 ) << "\n";
   }
 
+  void update( std::string_view version = use_github_revision )
+  {
+    std::string version_;
+    version_ = version;
+#ifdef GIT_SHORT_REVISION
+    if ( version == experiments::use_github_revision )
+    {
+      version_ = GIT_SHORT_REVISION;
+    }
+#endif
+
+    nlohmann::json entries;
+    for ( auto i = 0u; i < data_.size(); ++i )
+    {
+      if ( data_[i]["version"] == version_ )
+      {
+        entries = data_[i]["entries"];
+        data_.erase( i );
+        break;
+      }
+    }
+
+    if ( entries.empty() )
+    {
+      fmt::print( "[w] version {} not found; writing in as new\n", version_ );
+    }
+    
+    for ( auto const& row : rows_ )
+    {
+      auto it = column_names_.begin();
+      nlohmann::json entry;
+      std::apply(
+          [&]( auto&&... args ) {
+            ( ( entry[*it++] = args ), ... );
+          },
+          row );
+
+      auto it2 = std::find_if( entries.begin(), entries.end(), [&]( auto const& old_row ) { 
+        return old_row["benchmark"] == entry["benchmark"];
+      } );
+      if ( it2 != entries.end() )
+      {
+        entries.insert( entries.erase( it2 ), entry );
+      }
+      else
+      {
+        fmt::print( "[w] benchmark {} not found; writing in as new\n", entry["benchmark"] );
+        entries.push_back( entry );
+      }
+    }
+
+    data_.push_back( {{"version", version_},
+                      {"entries", entries}} );
+
+    std::ofstream os( filename_, std::ofstream::out );
+    os << data_.dump( 2 ) << "\n";
+  }
+
   void operator()( ColumnTypes... args )
   {
     rows_.emplace_back( args... );
@@ -353,6 +411,48 @@ public:
     }
 
     return true;
+  }
+
+  template<typename data_t>
+  std::optional<data_t> get_entry( std::string const& benchmark_name, std::string const& column_name, std::string const& version = {} )
+  {
+    if ( data_.empty() )
+    {
+      fmt::print( "[w] no data available\n" );
+      return std::nullopt;
+    }
+
+    if ( std::find( column_names_.begin(), column_names_.end(), "benchmark" ) == column_names_.end() )
+    {
+      fmt::print( "[w] there is not a column named \"benchmark\"\n" );
+      return std::nullopt;
+    }
+
+    if ( std::find( column_names_.begin(), column_names_.end(), column_name ) == column_names_.end() )
+    {
+      fmt::print( "[w] there is not a column named \"{}\"\n", column_name );
+      return std::nullopt;
+    }
+
+    try
+    {
+      auto const& data = dataset( version, data_.back() );
+      for ( auto const& row : data["entries"] )
+      {
+        if ( row["benchmark"] == benchmark_name )
+        {
+          return static_cast<data_t>( row[column_name] );
+        }
+      }
+    }
+    catch ( ... )
+    {
+      fmt::print( "[w] version {} not found\n", version );
+      return std::nullopt;
+    }
+
+    fmt::print( "[w] no benchmark named {} found\n", benchmark_name );
+    return std::nullopt;
   }
 
 private:

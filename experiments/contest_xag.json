@@ -1,0 +1,601 @@
+[
+  {
+    "entries": [
+      {
+        "#gates": 128,
+        "benchmark": "ex00",
+        "depth": 28,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 854,
+        "benchmark": "ex01",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1455,
+        "benchmark": "ex02",
+        "depth": 36,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 119,
+        "benchmark": "ex03",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 46,
+        "benchmark": "ex04",
+        "depth": 13,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1835,
+        "benchmark": "ex05",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 113,
+        "benchmark": "ex06",
+        "depth": 24,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 13,
+        "benchmark": "ex07",
+        "depth": 7,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1253,
+        "benchmark": "ex08",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2388,
+        "benchmark": "ex09",
+        "depth": 37,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 76,
+        "benchmark": "ex10",
+        "depth": 17,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1393,
+        "benchmark": "ex11",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 15,
+        "benchmark": "ex12",
+        "depth": 8,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 41,
+        "benchmark": "ex13",
+        "depth": 14,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 35,
+        "benchmark": "ex14",
+        "depth": 9,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2232,
+        "benchmark": "ex15",
+        "depth": 25,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1394,
+        "benchmark": "ex16",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 22,
+        "benchmark": "ex17",
+        "depth": 9,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 8746,
+        "benchmark": "ex18",
+        "depth": 28,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 86,
+        "benchmark": "ex19",
+        "depth": 25,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 475,
+        "benchmark": "ex20",
+        "depth": 33,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 50,
+        "benchmark": "ex21",
+        "depth": 15,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 595,
+        "benchmark": "ex22",
+        "depth": 18,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 32,
+        "benchmark": "ex23",
+        "depth": 14,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 386,
+        "benchmark": "ex24",
+        "depth": 22,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 514,
+        "benchmark": "ex25",
+        "depth": 30,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 4531,
+        "benchmark": "ex26",
+        "depth": 37,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1278,
+        "benchmark": "ex27",
+        "depth": 33,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1891,
+        "benchmark": "ex28",
+        "depth": 30,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2014,
+        "benchmark": "ex29",
+        "depth": 30,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 24,
+        "benchmark": "ex30",
+        "depth": 13,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2214,
+        "benchmark": "ex31",
+        "depth": 41,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 24,
+        "benchmark": "ex32",
+        "depth": 10,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 740,
+        "benchmark": "ex33",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2835,
+        "benchmark": "ex34",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 31,
+        "benchmark": "ex35",
+        "depth": 13,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 259,
+        "benchmark": "ex36",
+        "depth": 35,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 654,
+        "benchmark": "ex37",
+        "depth": 37,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 186,
+        "benchmark": "ex38",
+        "depth": 29,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 47,
+        "benchmark": "ex39",
+        "depth": 20,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 142,
+        "benchmark": "ex40",
+        "depth": 28,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 25,
+        "benchmark": "ex41",
+        "depth": 8,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 208,
+        "benchmark": "ex42",
+        "depth": 30,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 791,
+        "benchmark": "ex43",
+        "depth": 39,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 66,
+        "benchmark": "ex44",
+        "depth": 17,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 154,
+        "benchmark": "ex45",
+        "depth": 26,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 104,
+        "benchmark": "ex46",
+        "depth": 25,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 193,
+        "benchmark": "ex47",
+        "depth": 24,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1997,
+        "benchmark": "ex48",
+        "depth": 23,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 84,
+        "benchmark": "ex49",
+        "depth": 26,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1079,
+        "benchmark": "ex50",
+        "depth": 43,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2932,
+        "benchmark": "ex51",
+        "depth": 42,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 68,
+        "benchmark": "ex52",
+        "depth": 17,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 54,
+        "benchmark": "ex53",
+        "depth": 21,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2238,
+        "benchmark": "ex54",
+        "depth": 35,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 63,
+        "benchmark": "ex55",
+        "depth": 20,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 300,
+        "benchmark": "ex56",
+        "depth": 38,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 55,
+        "benchmark": "ex57",
+        "depth": 20,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 971,
+        "benchmark": "ex58",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 344,
+        "benchmark": "ex59",
+        "depth": 41,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1032,
+        "benchmark": "ex60",
+        "depth": 40,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 201,
+        "benchmark": "ex61",
+        "depth": 27,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 15,
+        "benchmark": "ex62",
+        "depth": 4,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1030,
+        "benchmark": "ex64",
+        "depth": 38,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 90,
+        "benchmark": "ex65",
+        "depth": 18,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 7405,
+        "benchmark": "ex66",
+        "depth": 47,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1027,
+        "benchmark": "ex67",
+        "depth": 30,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 116,
+        "benchmark": "ex68",
+        "depth": 28,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 221,
+        "benchmark": "ex69",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1467,
+        "benchmark": "ex70",
+        "depth": 34,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 72,
+        "benchmark": "ex71",
+        "depth": 15,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 766,
+        "benchmark": "ex72",
+        "depth": 35,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 872,
+        "benchmark": "ex73",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 315,
+        "benchmark": "ex74",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 846,
+        "benchmark": "ex75",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 349,
+        "benchmark": "ex76",
+        "depth": 28,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 593,
+        "benchmark": "ex77",
+        "depth": 35,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 610,
+        "benchmark": "ex78",
+        "depth": 18,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 39,
+        "benchmark": "ex79",
+        "depth": 11,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1056,
+        "benchmark": "ex80",
+        "depth": 29,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 51,
+        "benchmark": "ex81",
+        "depth": 24,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 2001,
+        "benchmark": "ex82",
+        "depth": 34,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 99,
+        "benchmark": "ex83",
+        "depth": 20,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 158,
+        "benchmark": "ex84",
+        "depth": 29,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 180,
+        "benchmark": "ex85",
+        "depth": 35,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 312,
+        "benchmark": "ex86",
+        "depth": 27,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 942,
+        "benchmark": "ex87",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 975,
+        "benchmark": "ex88",
+        "depth": 36,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 14,
+        "benchmark": "ex89",
+        "depth": 8,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 27,
+        "benchmark": "ex90",
+        "depth": 12,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 304,
+        "benchmark": "ex91",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 527,
+        "benchmark": "ex92",
+        "depth": 34,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 75,
+        "benchmark": "ex93",
+        "depth": 13,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1526,
+        "benchmark": "ex94",
+        "depth": 38,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 56,
+        "benchmark": "ex95",
+        "depth": 14,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 14,
+        "benchmark": "ex96",
+        "depth": 10,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 256,
+        "benchmark": "ex97",
+        "depth": 24,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 160,
+        "benchmark": "ex98",
+        "depth": 38,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 27,
+        "benchmark": "ex99",
+        "depth": 15,
+        "method": "convert_klut_to_graph"
+      }
+    ],
+    "version": "best"
+  }
+]
