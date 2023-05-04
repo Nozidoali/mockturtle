@@ -68,6 +68,9 @@ public:
     ps.max_inserts = 3;
     ps.max_divisors = 1000;
     ps.max_pis = 20;
+    ps.odc_levels = 3;
+    ps.conflict_limit = 1000000;
+    ps.max_clauses = 100000;
     while ( 1 )
     {
       uint32_t prev_size = xag.num_gates();
@@ -82,7 +85,7 @@ public:
 
   std::string name() const
   {
-    return "convert_klut_to_graph";
+    return "convert_klut_to_graph + high-effort sim-resub";
   }
 private:
 
