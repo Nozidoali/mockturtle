@@ -33,7 +33,6 @@
 
 #include "../../io/truth_reader.hpp"
 #include "../../networks/aig.hpp"
-#include "../../networks/xag.hpp"
 #include "../klut_to_graph.hpp"
 #include "../sim_resub.hpp"
 
@@ -44,24 +43,24 @@ namespace mockturtle
 namespace contest
 {
 
-class contest_method_xag_params
+class contest_method_aig_params
 {
 
 };
-class contest_method_xag
+class contest_method_aig
 {
 public:
-  contest_method_xag(contest_method_xag_params const& ps = {})
+  contest_method_aig(contest_method_aig_params const& ps = {})
     : ps(ps)
   {
 
   }
 
-  xag_network run(klut_network const& klut)
+  aig_network run(klut_network const& klut)
   {
     // get the initial network
-    xag_network xag;
-    convert_klut_to_graph( xag, klut );
+    aig_network aig;
+    convert_klut_to_graph( aig, klut );
     
     // optimization
     resubstitution_params ps;
@@ -70,14 +69,14 @@ public:
     ps.max_pis = 20;
     while ( 1 )
     {
-      uint32_t prev_size = xag.num_gates();
-      sim_resubstitution( xag, ps );
+      uint32_t prev_size = aig.num_gates();
+      sim_resubstitution( aig, ps );
       
-      xag = cleanup_dangling( xag );
-      if ( xag.num_gates() == prev_size )
+      aig = cleanup_dangling( aig );
+      if ( aig.num_gates() == prev_size )
         break;
     }
-    return xag;
+    return aig;
   }
 
   std::string name() const
@@ -86,7 +85,7 @@ public:
   }
 private:
 
-  contest_method_xag_params ps;
+  contest_method_aig_params ps;
 };
 
 } // namespace contest

@@ -10,7 +10,7 @@
 #include <mockturtle/utils/stopwatch.hpp>
 #include <mockturtle/algorithms/klut_to_graph.hpp>
 #include <mockturtle/algorithms/contest/cec.hpp>
-#include <mockturtle/algorithms/contest/contest_xag.hpp>
+#include <mockturtle/algorithms/contest/contest_aig.hpp>
 
 #include <thread>
 #include <mutex>
@@ -24,7 +24,7 @@ using namespace mockturtle;
 
 using experiment_t = experiments::experiment<std::string, uint32_t, uint32_t, std::string>;
 
-experiment_t exp_res( "contest_xag", "benchmark", "#gates", "depth", "method" );
+experiment_t exp_res( "contest_aig", "benchmark", "#gates", "depth", "method" );
 
 struct contest_parameters
 {
@@ -39,7 +39,7 @@ std::mutex exp_mutex;
 void thread_run( contest_parameters const& ps, std::string const& run_only_one )
 {
   const std::string benchmark_path = "../experiments/contest_benchmarks/";
-  const std::string output_path = "../experiments/contest_results/xags/";
+  const std::string output_path = "../experiments/contest_results/aigs/";
 
   uint32_t id = exp_id++;
 
@@ -63,14 +63,14 @@ void thread_run( contest_parameters const& ps, std::string const& run_only_one )
       continue;
     }
     
-    xag_network xag;
+    aig_network aig;
     auto start = std::chrono::high_resolution_clock::now();
 
     /* Step 2: define method here*/
-    auto method = contest::contest_method_xag();
-    xag = method.run( klut );
+    auto method = contest::contest_method_aig();
+    aig = method.run( klut );
 
-    if ( !abc_cec_truth( xag, klut, benchmark ) )
+    if ( !abc_cec_truth( aig, klut, benchmark ) )
     {
       std::cout << "[w] cec = false!\n";
       id = exp_id++;
@@ -78,19 +78,19 @@ void thread_run( contest_parameters const& ps, std::string const& run_only_one )
     }
 
     /* Step 3: Evaluation */
-    auto dxag = depth_view{xag};
-    if ( xag.num_gates() < current_best )
+    auto daig = depth_view{aig};
+    if ( aig.num_gates() < current_best )
     {
-      fmt::print( "[i] obtained better result on {}: {} < {}\n", benchmark, xag.num_gates(), current_best );
+      fmt::print( "[i] obtained better result on {}: {} < {}\n", benchmark, aig.num_gates(), current_best );
       exp_mutex.lock();
-      exp_res( benchmark, xag.num_gates(), dxag.depth(), method.name() );
+      exp_res( benchmark, aig.num_gates(), daig.depth(), method.name() );
       exp_mutex.unlock();
-      aig_network aig = cleanup_dangling<xag_network, aig_network>( xag );
+      aig = cleanup_dangling( aig );
       write_aiger( aig, output_path + benchmark + ".aig" );
     }
     else
     {
-      fmt::print( "[i] obtained worse result on {}: {} >= {}\n", benchmark, xag.num_gates(), current_best );
+      fmt::print( "[i] obtained worse result on {}: {} >= {}\n", benchmark, aig.num_gates(), current_best );
     }
 
     auto stop = std::chrono::high_resolution_clock::now();
@@ -99,8 +99,8 @@ void thread_run( contest_parameters const& ps, std::string const& run_only_one )
     if ( ps.verbose )
     {
       std::cout << ".b " << benchmark << "\n";
-      std::cout << ".g " << xag.num_gates() << "\n";
-      std::cout << ".d " << dxag.depth() << "\n";
+      std::cout << ".g " << aig.num_gates() << "\n";
+      std::cout << ".d " << daig.depth() << "\n";
       std::cout << ".t " << duration.count() << std::endl;
     }
 

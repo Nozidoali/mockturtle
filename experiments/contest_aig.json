@@ -2,603 +2,603 @@
   {
     "entries": [
       {
-        "#gates": 111,
+        "#gates": 114,
         "benchmark": "ex00",
-        "depth": 31,
+        "depth": 21,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 604,
+        "#gates": 619,
         "benchmark": "ex01",
-        "depth": 47,
+        "depth": 41,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 1000,
+        "#gates": 1057,
         "benchmark": "ex02",
-        "depth": 64,
+        "depth": 46,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 95,
+        "#gates": 87,
         "benchmark": "ex03",
-        "depth": 28,
+        "depth": 21,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 38,
+        "#gates": 42,
         "benchmark": "ex04",
         "depth": 11,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 1308,
+        "#gates": 1221,
         "benchmark": "ex05",
-        "depth": 67,
+        "depth": 44,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 95,
+        "#gates": 89,
         "benchmark": "ex06",
-        "depth": 22,
+        "depth": 17,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 15,
+        "#gates": 25,
         "benchmark": "ex07",
-        "depth": 8,
+        "depth": 9,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 1019,
+        "#gates": 1146,
         "benchmark": "ex08",
-        "depth": 60,
+        "depth": 63,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 1515,
+        "#gates": 1573,
         "benchmark": "ex09",
-        "depth": 50,
+        "depth": 44,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 58,
+        "#gates": 56,
         "benchmark": "ex10",
         "depth": 12,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 853,
+        "#gates": 826,
         "benchmark": "ex11",
-        "depth": 65,
+        "depth": 60,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 15,
+        "#gates": 13,
         "benchmark": "ex12",
         "depth": 8,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 25,
+        "#gates": 38,
         "benchmark": "ex13",
-        "depth": 10,
+        "depth": 16,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 35,
+        "#gates": 45,
         "benchmark": "ex14",
-        "depth": 10,
+        "depth": 8,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 1705,
+        "#gates": 1722,
         "benchmark": "ex15",
-        "depth": 39,
+        "depth": 27,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 901,
+        "#gates": 897,
         "benchmark": "ex16",
-        "depth": 91,
+        "depth": 56,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 21,
+        "#gates": 22,
         "benchmark": "ex17",
         "depth": 10,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 8441,
+        "#gates": 8351,
         "benchmark": "ex18",
-        "depth": 30,
+        "depth": 26,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 85,
+        "#gates": 106,
         "benchmark": "ex19",
-        "depth": 23,
+        "depth": 17,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 383,
+        "#gates": 398,
         "benchmark": "ex20",
-        "depth": 37,
+        "depth": 30,
         "method": "convert_klut_to_graph"
       },
       {
         "#gates": 47,
         "benchmark": "ex21",
-        "depth": 17,
+        "depth": 18,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 534,
+        "#gates": 606,
         "benchmark": "ex22",
-        "depth": 32,
+        "depth": 24,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 26,
+        "#gates": 27,
         "benchmark": "ex23",
-        "depth": 14,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 256,
-        "benchmark": "ex24",
-        "depth": 23,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 297,
-        "benchmark": "ex25",
-        "depth": 28,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 1194,
-        "benchmark": "ex26",
-        "depth": 42,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 779,
-        "benchmark": "ex27",
-        "depth": 55,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 1323,
-        "benchmark": "ex28",
-        "depth": 61,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 1464,
-        "benchmark": "ex29",
-        "depth": 63,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 23,
-        "benchmark": "ex30",
         "depth": 11,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 1078,
-        "benchmark": "ex31",
+        "#gates": 257,
+        "benchmark": "ex24",
+        "depth": 25,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 881,
+        "benchmark": "ex25",
+        "depth": 36,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1115,
+        "benchmark": "ex26",
+        "depth": 47,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 798,
+        "benchmark": "ex27",
         "depth": 42,
         "method": "convert_klut_to_graph"
       },
       {
+        "#gates": 1414,
+        "benchmark": "ex28",
+        "depth": 52,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1489,
+        "benchmark": "ex29",
+        "depth": 49,
+        "method": "convert_klut_to_graph"
+      },
+      {
         "#gates": 26,
+        "benchmark": "ex30",
+        "depth": 10,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1150,
+        "benchmark": "ex31",
+        "depth": 37,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 30,
         "benchmark": "ex32",
         "depth": 10,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 511,
+        "#gates": 555,
         "benchmark": "ex33",
-        "depth": 45,
+        "depth": 37,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 2174,
+        "#gates": 2467,
         "benchmark": "ex34",
-        "depth": 50,
+        "depth": 36,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 26,
+        "#gates": 56,
         "benchmark": "ex35",
-        "depth": 11,
+        "depth": 17,
         "method": "convert_klut_to_graph"
       },
       {
         "#gates": 184,
         "benchmark": "ex36",
-        "depth": 24,
+        "depth": 27,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 382,
+        "#gates": 404,
         "benchmark": "ex37",
-        "depth": 53,
+        "depth": 46,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 134,
+        "#gates": 133,
         "benchmark": "ex38",
-        "depth": 22,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 30,
-        "benchmark": "ex39",
-        "depth": 11,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 117,
-        "benchmark": "ex40",
         "depth": 23,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 22,
+        "#gates": 56,
+        "benchmark": "ex39",
+        "depth": 17,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 150,
+        "benchmark": "ex40",
+        "depth": 25,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 20,
         "benchmark": "ex41",
-        "depth": 8,
+        "depth": 7,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 148,
+        "#gates": 182,
         "benchmark": "ex42",
-        "depth": 26,
+        "depth": 23,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 512,
+        "#gates": 525,
         "benchmark": "ex43",
-        "depth": 76,
+        "depth": 55,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 64,
+        "#gates": 74,
         "benchmark": "ex44",
-        "depth": 20,
+        "depth": 17,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 112,
+        "#gates": 111,
         "benchmark": "ex45",
         "depth": 18,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 97,
+        "#gates": 96,
         "benchmark": "ex46",
+        "depth": 19,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 219,
+        "benchmark": "ex47",
         "depth": 23,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 171,
-        "benchmark": "ex47",
-        "depth": 22,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 1481,
+        "#gates": 1610,
         "benchmark": "ex48",
-        "depth": 39,
+        "depth": 34,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 69,
+        "#gates": 63,
         "benchmark": "ex49",
-        "depth": 22,
+        "depth": 18,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 763,
+        "#gates": 634,
         "benchmark": "ex50",
-        "depth": 52,
+        "depth": 37,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 2281,
+        "#gates": 3775,
         "benchmark": "ex51",
-        "depth": 60,
+        "depth": 43,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 65,
+        "#gates": 100,
         "benchmark": "ex52",
-        "depth": 15,
+        "depth": 13,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 51,
+        "#gates": 49,
         "benchmark": "ex53",
-        "depth": 18,
+        "depth": 16,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 1631,
+        "#gates": 1539,
         "benchmark": "ex54",
-        "depth": 80,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 42,
-        "benchmark": "ex55",
-        "depth": 15,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 213,
-        "benchmark": "ex56",
-        "depth": 22,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 47,
-        "benchmark": "ex57",
-        "depth": 18,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 755,
-        "benchmark": "ex58",
-        "depth": 44,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 242,
-        "benchmark": "ex59",
-        "depth": 29,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 672,
-        "benchmark": "ex60",
-        "depth": 50,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 166,
-        "benchmark": "ex61",
-        "depth": 33,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 15,
-        "benchmark": "ex62",
-        "depth": 4,
+        "depth": 49,
         "method": "convert_klut_to_graph"
       },
       {
         "#gates": 92,
+        "benchmark": "ex55",
+        "depth": 22,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 215,
+        "benchmark": "ex56",
+        "depth": 41,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 42,
+        "benchmark": "ex57",
+        "depth": 15,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 777,
+        "benchmark": "ex58",
+        "depth": 39,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 250,
+        "benchmark": "ex59",
+        "depth": 39,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 713,
+        "benchmark": "ex60",
+        "depth": 39,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 188,
+        "benchmark": "ex61",
+        "depth": 22,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 25,
+        "benchmark": "ex62",
+        "depth": 6,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 90,
         "benchmark": "ex63",
         "depth": 15,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 849,
+        "#gates": 861,
         "benchmark": "ex64",
-        "depth": 57,
+        "depth": 34,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 89,
+        "#gates": 108,
         "benchmark": "ex65",
-        "depth": 11,
+        "depth": 13,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 6408,
+        "#gates": 6255,
         "benchmark": "ex66",
-        "depth": 49,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 689,
-        "benchmark": "ex67",
-        "depth": 68,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 96,
-        "benchmark": "ex68",
-        "depth": 27,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 158,
-        "benchmark": "ex69",
-        "depth": 24,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 771,
-        "benchmark": "ex70",
-        "depth": 76,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 46,
-        "benchmark": "ex71",
-        "depth": 16,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 502,
-        "benchmark": "ex72",
-        "depth": 56,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 598,
-        "benchmark": "ex73",
-        "depth": 42,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 223,
-        "benchmark": "ex74",
-        "depth": 27,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 481,
-        "benchmark": "ex75",
-        "depth": 44,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 248,
-        "benchmark": "ex76",
-        "depth": 29,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 488,
-        "benchmark": "ex77",
         "depth": 43,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 535,
-        "benchmark": "ex78",
-        "depth": 41,
+        "#gates": 694,
+        "benchmark": "ex67",
+        "depth": 40,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 32,
-        "benchmark": "ex79",
-        "depth": 8,
+        "#gates": 105,
+        "benchmark": "ex68",
+        "depth": 25,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 764,
-        "benchmark": "ex80",
-        "depth": 57,
+        "#gates": 156,
+        "benchmark": "ex69",
+        "depth": 22,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 25,
-        "benchmark": "ex81",
-        "depth": 11,
+        "#gates": 738,
+        "benchmark": "ex70",
+        "depth": 52,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 733,
-        "benchmark": "ex82",
+        "#gates": 88,
+        "benchmark": "ex71",
+        "depth": 15,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 492,
+        "benchmark": "ex72",
         "depth": 44,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 74,
+        "#gates": 673,
+        "benchmark": "ex73",
+        "depth": 38,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 753,
+        "benchmark": "ex74",
+        "depth": 31,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 542,
+        "benchmark": "ex75",
+        "depth": 34,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 280,
+        "benchmark": "ex76",
+        "depth": 23,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 468,
+        "benchmark": "ex77",
+        "depth": 29,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 626,
+        "benchmark": "ex78",
+        "depth": 25,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 30,
+        "benchmark": "ex79",
+        "depth": 9,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 789,
+        "benchmark": "ex80",
+        "depth": 42,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 38,
+        "benchmark": "ex81",
+        "depth": 17,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 1076,
+        "benchmark": "ex82",
+        "depth": 37,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 72,
         "benchmark": "ex83",
         "depth": 14,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 77,
+        "#gates": 79,
         "benchmark": "ex84",
-        "depth": 26,
+        "depth": 21,
         "method": "convert_klut_to_graph"
       },
       {
         "#gates": 160,
         "benchmark": "ex85",
-        "depth": 31,
+        "depth": 21,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 304,
+        "#gates": 341,
         "benchmark": "ex86",
-        "depth": 30,
+        "depth": 28,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 719,
+        "#gates": 681,
         "benchmark": "ex87",
-        "depth": 47,
+        "depth": 41,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 620,
+        "#gates": 678,
         "benchmark": "ex88",
-        "depth": 56,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 14,
-        "benchmark": "ex89",
-        "depth": 10,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 28,
-        "benchmark": "ex90",
-        "depth": 12,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 169,
-        "benchmark": "ex91",
-        "depth": 39,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 337,
-        "benchmark": "ex92",
         "depth": 33,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 64,
+        "#gates": 15,
+        "benchmark": "ex89",
+        "depth": 6,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 51,
+        "benchmark": "ex90",
+        "depth": 14,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 173,
+        "benchmark": "ex91",
+        "depth": 28,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 350,
+        "benchmark": "ex92",
+        "depth": 32,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 67,
         "benchmark": "ex93",
         "depth": 9,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 654,
+        "#gates": 726,
         "benchmark": "ex94",
         "depth": 33,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 44,
+        "#gates": 42,
         "benchmark": "ex95",
-        "depth": 11,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 15,
-        "benchmark": "ex96",
         "depth": 10,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 101,
+        "#gates": 23,
+        "benchmark": "ex96",
+        "depth": 11,
+        "method": "convert_klut_to_graph"
+      },
+      {
+        "#gates": 195,
         "benchmark": "ex97",
-        "depth": 31,
+        "depth": 24,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 125,
+        "#gates": 115,
         "benchmark": "ex98",
-        "depth": 33,
+        "depth": 23,
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 22,
+        "#gates": 35,
         "benchmark": "ex99",
-        "depth": 12,
+        "depth": 9,
         "method": "convert_klut_to_graph"
       }
     ],
