@@ -8,39 +8,39 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 575,
+        "#gates": 448,
         "benchmark": "ex01",
-        "depth": 35,
+        "depth": 28,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 929,
+        "#gates": 585,
         "benchmark": "ex02",
-        "depth": 37,
+        "depth": 28,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 89,
+        "#gates": 79,
         "benchmark": "ex03",
-        "depth": 20,
+        "depth": 19,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 38,
+        "#gates": 33,
         "benchmark": "ex04",
-        "depth": 11,
-        "method": "convert_klut_to_graph"
+        "depth": 10,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 1239,
+        "#gates": 878,
         "benchmark": "ex05",
-        "depth": 81,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 41,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 78,
+        "#gates": 69,
         "benchmark": "ex06",
-        "depth": 16,
+        "depth": 14,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
@@ -56,28 +56,28 @@
         "method": "convert_klut_to_graph + high-effort sim-resub"
       },
       {
-        "#gates": 1332,
+        "#gates": 950,
         "benchmark": "ex09",
-        "depth": 43,
+        "depth": 22,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 57,
+        "#gates": 54,
         "benchmark": "ex10",
-        "depth": 12,
+        "depth": 15,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 806,
+        "#gates": 657,
         "benchmark": "ex11",
-        "depth": 67,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 35,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 15,
+        "#gates": 12,
         "benchmark": "ex12",
-        "depth": 8,
-        "method": "convert_klut_to_graph"
+        "depth": 7,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 25,
@@ -92,15 +92,15 @@
         "method": "convert_klut_to_graph + high-effort sim-resub"
       },
       {
-        "#gates": 1705,
+        "#gates": 1679,
         "benchmark": "ex15",
-        "depth": 39,
-        "method": "convert_klut_to_graph"
+        "depth": 45,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 813,
+        "#gates": 523,
         "benchmark": "ex16",
-        "depth": 50,
+        "depth": 39,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
@@ -122,22 +122,22 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 353,
+        "#gates": 296,
         "benchmark": "ex20",
-        "depth": 38,
+        "depth": 24,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 47,
+        "#gates": 42,
         "benchmark": "ex21",
-        "depth": 17,
-        "method": "convert_klut_to_graph"
+        "depth": 14,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 534,
+        "#gates": 527,
         "benchmark": "ex22",
         "depth": 32,
-        "method": "convert_klut_to_graph"
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 24,
@@ -146,40 +146,40 @@
         "method": "convert_klut_to_graph + high-effort sim-resub"
       },
       {
-        "#gates": 215,
+        "#gates": 181,
         "benchmark": "ex24",
+        "depth": 16,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 229,
+        "benchmark": "ex25",
+        "depth": 26,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 281,
+        "benchmark": "ex26",
         "depth": 18,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 248,
-        "benchmark": "ex25",
-        "depth": 27,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 604,
-        "benchmark": "ex26",
-        "depth": 22,
+        "#gates": 601,
+        "benchmark": "ex27",
+        "depth": 32,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 720,
-        "benchmark": "ex27",
-        "depth": 61,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
-      },
-      {
-        "#gates": 1312,
+        "#gates": 1211,
         "benchmark": "ex28",
-        "depth": 54,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 34,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 1464,
+        "#gates": 1299,
         "benchmark": "ex29",
-        "depth": 63,
-        "method": "convert_klut_to_graph"
+        "depth": 41,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 23,
@@ -188,9 +188,9 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 586,
+        "#gates": 363,
         "benchmark": "ex31",
-        "depth": 19,
+        "depth": 21,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
@@ -200,10 +200,10 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 505,
+        "#gates": 396,
         "benchmark": "ex33",
-        "depth": 41,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 33,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 2104,
@@ -218,22 +218,22 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 184,
+        "#gates": 178,
         "benchmark": "ex36",
-        "depth": 24,
-        "method": "convert_klut_to_graph"
+        "depth": 27,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 382,
+        "#gates": 308,
         "benchmark": "ex37",
-        "depth": 53,
-        "method": "convert_klut_to_graph"
+        "depth": 28,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 134,
+        "#gates": 122,
         "benchmark": "ex38",
-        "depth": 22,
-        "method": "convert_klut_to_graph"
+        "depth": 28,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 29,
@@ -242,28 +242,28 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 115,
+        "#gates": 104,
         "benchmark": "ex40",
-        "depth": 23,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
-      },
-      {
-        "#gates": 22,
-        "benchmark": "ex41",
-        "depth": 8,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 134,
-        "benchmark": "ex42",
-        "depth": 17,
+        "depth": 19,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 512,
+        "#gates": 20,
+        "benchmark": "ex41",
+        "depth": 6,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 126,
+        "benchmark": "ex42",
+        "depth": 14,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 324,
         "benchmark": "ex43",
-        "depth": 76,
-        "method": "convert_klut_to_graph"
+        "depth": 36,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 64,
@@ -278,22 +278,22 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 82,
+        "#gates": 65,
         "benchmark": "ex46",
-        "depth": 17,
+        "depth": 16,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 169,
+        "#gates": 168,
         "benchmark": "ex47",
-        "depth": 19,
-        "method": "convert_klut_to_graph"
+        "depth": 22,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 1479,
+        "#gates": 1465,
         "benchmark": "ex48",
-        "depth": 41,
-        "method": "convert_klut_to_graph"
+        "depth": 44,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 62,
@@ -302,22 +302,22 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 620,
+        "#gates": 528,
         "benchmark": "ex50",
-        "depth": 39,
+        "depth": 33,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 2011,
+        "#gates": 1978,
         "benchmark": "ex51",
-        "depth": 57,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 54,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 45,
+        "#gates": 42,
         "benchmark": "ex52",
-        "depth": 13,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 16,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 49,
@@ -326,10 +326,10 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 1536,
+        "#gates": 1257,
         "benchmark": "ex54",
-        "depth": 79,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 43,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 41,
@@ -350,28 +350,28 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 731,
+        "#gates": 538,
         "benchmark": "ex58",
-        "depth": 41,
+        "depth": 19,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 242,
+        "#gates": 209,
         "benchmark": "ex59",
-        "depth": 29,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 608,
-        "benchmark": "ex60",
-        "depth": 32,
+        "depth": 28,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 159,
+        "#gates": 567,
+        "benchmark": "ex60",
+        "depth": 26,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 123,
         "benchmark": "ex61",
-        "depth": 32,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 14,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 15,
@@ -380,15 +380,15 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 92,
+        "#gates": 86,
         "benchmark": "ex63",
-        "depth": 15,
-        "method": "convert_klut_to_graph"
+        "depth": 14,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 809,
+        "#gates": 626,
         "benchmark": "ex64",
-        "depth": 31,
+        "depth": 26,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
@@ -404,9 +404,9 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 637,
+        "#gates": 503,
         "benchmark": "ex67",
-        "depth": 59,
+        "depth": 28,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
@@ -416,34 +416,34 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 158,
+        "#gates": 153,
         "benchmark": "ex69",
-        "depth": 24,
-        "method": "convert_klut_to_graph"
+        "depth": 29,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 683,
+        "#gates": 458,
         "benchmark": "ex70",
-        "depth": 63,
-        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
-      },
-      {
-        "#gates": 46,
-        "benchmark": "ex71",
-        "depth": 16,
-        "method": "convert_klut_to_graph"
-      },
-      {
-        "#gates": 393,
-        "benchmark": "ex72",
-        "depth": 34,
-        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
-      },
-      {
-        "#gates": 558,
-        "benchmark": "ex73",
         "depth": 47,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 39,
+        "benchmark": "ex71",
+        "depth": 17,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 225,
+        "benchmark": "ex72",
+        "depth": 23,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 394,
+        "benchmark": "ex73",
+        "depth": 22,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 214,
@@ -452,28 +452,28 @@
         "method": "convert_klut_to_graph + high-effort sim-resub"
       },
       {
-        "#gates": 449,
+        "#gates": 308,
         "benchmark": "ex75",
-        "depth": 46,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
-      },
-      {
-        "#gates": 210,
-        "benchmark": "ex76",
-        "depth": 27,
+        "depth": 25,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 413,
+        "#gates": 207,
+        "benchmark": "ex76",
+        "depth": 16,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
+      },
+      {
+        "#gates": 391,
         "benchmark": "ex77",
         "depth": 19,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 535,
+        "#gates": 530,
         "benchmark": "ex78",
-        "depth": 41,
-        "method": "convert_klut_to_graph"
+        "depth": 33,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 28,
@@ -482,10 +482,10 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 729,
+        "#gates": 520,
         "benchmark": "ex80",
-        "depth": 62,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 27,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 23,
@@ -494,9 +494,9 @@
         "method": "convert_klut_to_graph + high-effort sim-resub"
       },
       {
-        "#gates": 330,
+        "#gates": 102,
         "benchmark": "ex82",
-        "depth": 19,
+        "depth": 16,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
@@ -506,10 +506,10 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 41,
+        "#gates": 38,
         "benchmark": "ex84",
-        "depth": 14,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 16,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 157,
@@ -524,16 +524,16 @@
         "method": "convert_klut_to_graph + high-effort sim-resub"
       },
       {
-        "#gates": 623,
+        "#gates": 551,
         "benchmark": "ex87",
-        "depth": 40,
+        "depth": 31,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 572,
+        "#gates": 471,
         "benchmark": "ex88",
-        "depth": 60,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 24,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
         "#gates": 14,
@@ -548,15 +548,15 @@
         "method": "convert_klut_to_graph"
       },
       {
-        "#gates": 156,
+        "#gates": 133,
         "benchmark": "ex91",
-        "depth": 34,
-        "method": "convert_klut_to_graph + high-effort sim-resub"
+        "depth": 18,
+        "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 320,
+        "#gates": 264,
         "benchmark": "ex92",
-        "depth": 29,
+        "depth": 21,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
@@ -566,7 +566,7 @@
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 413,
+        "#gates": 267,
         "benchmark": "ex94",
         "depth": 17,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
@@ -584,15 +584,15 @@
         "method": "convert_klut_to_graph + high-effort sim-resub"
       },
       {
-        "#gates": 69,
+        "#gates": 52,
         "benchmark": "ex97",
-        "depth": 15,
+        "depth": 14,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
-        "#gates": 120,
+        "#gates": 113,
         "benchmark": "ex98",
-        "depth": 25,
+        "depth": 26,
         "method": "convert_klut_to_graph + high-effort sim-resub + balancing"
       },
       {
