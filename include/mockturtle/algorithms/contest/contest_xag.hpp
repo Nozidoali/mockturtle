@@ -36,6 +36,9 @@
 #include "../../networks/xag.hpp"
 #include "../klut_to_graph.hpp"
 #include "../sim_resub.hpp"
+#include "../balancing.hpp"
+#include "../balancing/esop_balancing.hpp"
+#include "../balancing/sop_balancing.hpp"
 
 #include "cec.hpp"
 
@@ -71,21 +74,33 @@ public:
     ps.odc_levels = 3;
     ps.conflict_limit = 1000000;
     ps.max_clauses = 100000;
+
+    xag_network best_xag = xag.clone();
+    uint32_t prev_size = xag.num_gates();
+
     while ( 1 )
     {
-      uint32_t prev_size = xag.num_gates();
-      sim_resubstitution( xag, ps );
-      
-      xag = cleanup_dangling( xag );
-      if ( xag.num_gates() == prev_size )
+      while ( 1 )
+      {
+        uint32_t size_before = xag.num_gates();
+        sim_resubstitution( xag, ps );
+        xag = cleanup_dangling( xag );
+        if ( xag.num_gates() >= size_before )
+          break;
+      }
+      if ( xag.num_gates() >= prev_size )
         break;
+      best_xag = xag.clone();
+      prev_size = xag.num_gates();
+      xag = balancing( xag, { sop_rebalancing<xag_network>{} } );
+      xag = cleanup_dangling( xag );
     }
-    return xag;
+    return best_xag;
   }
 
   std::string name() const
   {
-    return "convert_klut_to_graph + high-effort sim-resub";
+    return "convert_klut_to_graph + high-effort sim-resub + balancing";
   }
 private:
 

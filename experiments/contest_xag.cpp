@@ -41,7 +41,9 @@ void thread_run( contest_parameters const& ps, std::string const& run_only_one )
   const std::string benchmark_path = "../experiments/contest_benchmarks/";
   const std::string output_path = "../experiments/contest_results/xags/";
 
+  exp_mutex.lock();
   uint32_t id = exp_id++;
+  exp_mutex.unlock();
 
   while ( id < 100 )
   {
