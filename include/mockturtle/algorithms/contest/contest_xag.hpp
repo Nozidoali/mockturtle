@@ -61,8 +61,8 @@ namespace contest
 class contest_method_xag_params
 {
 public:
-  uint32_t search_length = 200;
-  uint32_t num_search = 3;
+  uint32_t search_length = 10;
+  uint32_t num_search = 1;
 };
 class contest_method_xag
 {
