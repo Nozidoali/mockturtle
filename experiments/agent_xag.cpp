@@ -38,7 +38,7 @@ std::mutex exp_mutex;
 
 uint32_t num_exps = 100;
 
-void thread_run( contest_parameters const& ps, std::string const& run_only_one )
+void thread_run( contest_parameters const& ps )
 {
   const std::string benchmark_path = "../experiments/training_benchmarks/";
   const std::string output_path = "../experiments/training_results/";
@@ -52,7 +52,14 @@ void thread_run( contest_parameters const& ps, std::string const& run_only_one )
     /* Step 1: Read benchmarks */
     std::string benchmark = fmt::format( "ex{:02}", id );
 
-    auto current_best = *exp_res.get_entry<uint32_t>( benchmark, "#gates", "best" );
+    auto current_best_ptr = exp_res.get_entry<uint32_t>( benchmark, "#gates", "best" );
+    
+    uint32_t current_best = std::numeric_limits<uint32_t>::max();
+    if ( current_best_ptr != std::nullopt )
+    {
+      current_best = *current_best_ptr;
+    }
+    
     std::cout << "[i] processing " << benchmark << " curr best = " << current_best << "\n";
     klut_network klut;
     auto res = lorina::read_truth( benchmark_path + benchmark + ".truth", truth_reader( klut ) );
@@ -119,7 +126,7 @@ int main( int argc, char* argv[] )
   if ( argc == 2 )
     run_only_one = std::string( argv[1] );
 
-  const auto processor_count = run_only_one != "" ? 1 : std::thread::hardware_concurrency();
+  const auto processor_count = std::thread::hardware_concurrency();
 
   /* starting benchmark id */
   exp_id.store( 0 );
@@ -130,7 +137,7 @@ int main( int argc, char* argv[] )
 
   for ( auto i = 0u; i < processor_count; ++i )
   {
-    threads.emplace_back( thread_run, ps_contest, run_only_one );
+    threads.emplace_back( thread_run, ps_contest );
   }
 
   /* wait threads */

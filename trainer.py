@@ -5,7 +5,7 @@
 Author: Hanyu Wang
 Created time: 2023-05-05 16:39:37
 Last Modified by: Hanyu Wang
-Last Modified time: 2023-05-05 19:11:40
+Last Modified time: 2023-05-06 10:37:05
 '''
 
 import os
@@ -50,6 +50,11 @@ def run_exp(skip_make: bool = False):
         if results[i] < 0:
             print(f"INFO: {i} is a counter example.")
             useful_results[i] = results[i]
+            
+            # then we save the counter example
+            filename = f"./experiments/counter_examples/n{solutions[i]}.truth"
+
+            subprocess.run(f"cp ./experiments/training_benchmarks/{i}.truth {filename}", shell=True)
 
     print_results(results)
 
@@ -67,4 +72,4 @@ def run_exp(skip_make: bool = False):
     subprocess.run('rm -f ./experiments/agent_xag.json', shell=True)
 
 if __name__ == "__main__":
-    run_exp(skip_make=True)
+    run_exp(skip_make=False)
