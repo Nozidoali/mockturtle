@@ -86,6 +86,7 @@ void thread_run( contest_parameters const& ps, std::string const& run_only_one )
       fmt::print( "[i] obtained better result on {}: {} < {}\n", benchmark, xag.num_gates(), current_best );
       exp_mutex.lock();
       exp_res( benchmark, xag.num_gates(), dxag.depth(), method.name() );
+      exp_res.update( "best" );
       exp_mutex.unlock();
       aig_network aig = cleanup_dangling<xag_network, aig_network>( xag );
       write_aiger( aig, output_path + benchmark + ".aig" );
