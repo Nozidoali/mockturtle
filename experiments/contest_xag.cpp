@@ -10,7 +10,7 @@
 #include <mockturtle/utils/stopwatch.hpp>
 #include <mockturtle/algorithms/klut_to_graph.hpp>
 #include <mockturtle/algorithms/contest/cec.hpp>
-#include <mockturtle/algorithms/contest/contest_xag.hpp>
+#include <mockturtle/algorithms/contest/contest_xag_v2.hpp>
 
 #include <thread>
 #include <mutex>
@@ -33,9 +33,13 @@ struct contest_parameters
 
 
 /* 100 */
-std::unordered_set<uint32_t> id_skipped = {0,1,2,5,8,9,11,15,16,18,20,22,24,25,26,27,28,29,31,33,34,36,37,38,40,42,43,45,47,48,50,51,54,56,58,59,60,61,64,66,67,69,70,72,73,74,75,76,77,78,80,82,85,86,87,88,91,92,94,98};
+// std::unordered_set<uint32_t> id_skipped = {0,1,2,5,8,9,11,15,16,18,20,22,24,25,26,27,28,29,31,33,34,36,37,38,40,42,43,45,47,48,50,51,54,56,58,59,60,61,64,66,67,69,70,72,73,74,75,76,77,78,80,82,85,86,87,88,91,92,94,98};
 
 /* 1000 */
+// std::unordered_set<uint32_t> id_skipped = {8,15,18,28,29,34,48,51,54,66};
+
+/* none */
+std::unordered_set<uint32_t> id_skipped = {};
 
 #pragma region mutex
 std::atomic<uint32_t> exp_id{0};

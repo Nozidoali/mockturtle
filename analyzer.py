@@ -30,7 +30,7 @@ def print_results(results):
 def print_large_ids(results):
     ids = []
     for i in results:
-        if results[i] > 100:
+        if results[i] > 1000:
 
             id = int(i.replace("ex", ""))
             ids.append(str(id))
