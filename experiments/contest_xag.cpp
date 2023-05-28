@@ -31,6 +31,12 @@ struct contest_parameters
   bool verbose{false};
 };
 
+
+/* 100 */
+std::unordered_set<uint32_t> id_skipped = {0,1,2,5,8,9,11,15,16,18,20,22,24,25,26,27,28,29,31,33,34,36,37,38,40,42,43,45,47,48,50,51,54,56,58,59,60,61,64,66,67,69,70,72,73,74,75,76,77,78,80,82,85,86,87,88,91,92,94,98};
+
+/* 1000 */
+
 #pragma region mutex
 std::atomic<uint32_t> exp_id{0};
 std::mutex exp_mutex;
@@ -51,9 +57,20 @@ void thread_run( contest_parameters const& ps, std::string const& run_only_one )
     std::string benchmark = fmt::format( "ex{:02}", id );
     if ( run_only_one != "" && benchmark != run_only_one )
     {
+      exp_mutex.lock();
       id = exp_id++;
+      exp_mutex.unlock();
       continue;
     }
+
+    if ( id_skipped.find( id ) != id_skipped.end() )
+    {
+      exp_mutex.lock();
+      id = exp_id++;
+      exp_mutex.unlock();
+      continue;
+    }
+
     auto current_best = *exp_res.get_entry<uint32_t>( benchmark, "#gates", "best" );
     std::cout << "[i] processing " << benchmark << " curr best = " << current_best << "\n";
     klut_network klut;

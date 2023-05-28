@@ -51,6 +51,9 @@
 #include "../cut_rewriting.hpp"
 #include "../node_resynthesis/xag_npn.hpp"
 
+/* for output permutation */
+#include "../permute_outputs.hpp"
+
 #include "cec.hpp"
 
 namespace mockturtle
@@ -61,7 +64,7 @@ namespace contest
 class contest_method_xag_params
 {
 public:
-  uint32_t search_length = 200;
+  uint32_t search_length = 20;
   uint32_t num_search = 20;
 };
 class contest_method_xag
@@ -73,8 +76,11 @@ public:
 
   }
 
-  xag_network run(klut_network const& klut)
+  xag_network run(klut_network const& _klut)
   {
+    // clone the klut network
+    klut_network klut = _klut;
+
     // get the initial network
     xag_network xag;
     convert_klut_to_graph( xag, klut );
@@ -97,11 +103,25 @@ public:
     /* every search starts from this initial xag */
     xag_network start_xag = xag.clone();
 
+    /* random number generator */
+    std::mt19937 g( 213 );
+    std::vector<uint64_t> outputs_order( klut.num_pos() );
+    std::iota( std::begin( outputs_order ), std::end( outputs_order ), 0 );
 
     for ( uint32_t search_idx = 0; search_idx < ps.num_search; search_idx++ )
     {
+
+      /* if the network size is reduced, we permute the outputs */
       if ( xag.num_gates() > start_xag.num_gates() )
-        xag = start_xag.clone();
+      {
+        std::shuffle( outputs_order.begin(), outputs_order.end(), g );
+
+        klut_network output_permuted_klut = permute_outputs( klut, outputs_order );
+        xag = convert_klut_to_graph<xag_network>( output_permuted_klut );
+        xag = permute_outputs_back( xag, outputs_order );
+
+        xag = cleanup_dangling( xag );
+      }
       for ( uint32_t op_idx = 0; op_idx < ps.search_length; op_idx ++ )
       {
         /* high-effort logic minimization */

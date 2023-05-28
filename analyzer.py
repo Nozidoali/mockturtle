@@ -26,3 +26,18 @@ def print_results(results):
         if row % 10 == 0:
             print()
 
+
+def print_large_ids(results):
+    ids = []
+    for i in results:
+        if results[i] > 100:
+
+            id = int(i.replace("ex", ""))
+            ids.append(str(id))
+    
+    print("{" + ",".join(ids) + "}")
+
+if __name__ == "__main__":
+    results = analyze_results("./experiments/contest_xag.json")
+    # print_results(results)
+    print_large_ids(results)
