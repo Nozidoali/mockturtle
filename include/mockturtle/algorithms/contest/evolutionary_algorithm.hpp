@@ -95,10 +95,15 @@ public:
 
   Ntk run()
   {
+    auto start = std::chrono::high_resolution_clock::now();
     if ( ntks[0].num_pos() == 1 ) return ntks[0]; // skip single output problem
     if ( ntks[0].num_gates() >= ps.size_limit ) return ntks[0]; // skip large problem
     for ( int i = 0; i < ps.num_generations; i++ )
     {
+      auto stop = std::chrono::high_resolution_clock::now();
+      auto duration = std::chrono::duration_cast<std::chrono::seconds>(stop - start);
+      if ( duration.count() > 600 ) break; // timeout
+
       evolve( i );
       // fmt::print( "{},{}\n", i, ntks[0].num_gates() );
     }

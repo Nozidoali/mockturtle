@@ -43,23 +43,34 @@
 /* for output permutation */
 #include "../permute_outputs.hpp"
 
+#include "klut_init_xag.hpp"
+
 namespace mockturtle
 {
 
 std::vector<xag_network> xag_initializations(klut_network const& _klut)
 {
 
-  std::vector<xag_network> xags;
-
   // clone the klut network
   klut_network klut = _klut;
+
+  // initialize the xag network
+  tts_to_xags_params ps;
+  ps.permute_output = true;
+  ps.population = 2u;
+  ps.max_unate_pairs = 1000u;
+  
+  std::vector<xag_network> xags = klut_to_xags( klut );
 
   /* random number generator */
   std::mt19937 g( 888 );
   std::vector<uint64_t> outputs_order( klut.num_pos() );
   std::iota( std::begin( outputs_order ), std::end( outputs_order ), 0 );
 
-  uint32_t n_inits = 6u;
+  /* hdp */
+
+  /* basic flow + output permutation */
+  uint32_t n_inits = 2u;
   for ( uint32_t i = 0; i < n_inits; ++i )
   {
     std::shuffle( outputs_order.begin(), outputs_order.end(), g );

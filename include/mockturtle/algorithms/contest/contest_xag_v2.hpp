@@ -60,7 +60,7 @@ public:
 
     evolutionary_algorithm_params params;
     params.mutation_rate = 0.5;
-    params.num_parents = 3;
+    params.num_parents = 4;
     params.num_offsprings = 5;
     params.num_generations = 100;
     params.size_limit = 10000;
