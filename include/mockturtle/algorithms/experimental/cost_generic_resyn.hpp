@@ -209,14 +209,14 @@ public:
     auto evalfn = [&]( const auto s ) {
       /* everytime the function is called, a feasible solution is found */
       st.num_roots += 1;
+      n_solutions++;
       auto _cost = forest.get_cost( forest.get_node( s ), pis );
       if ( _cost < best_cost )
       {
-        n_solutions++;
         best_cost = _cost;
         best_candidate = s;
-        return ( ps.max_solutions > 0 ) && ( n_solutions >= ps.max_solutions ); /* stop searching */
       }
+      return ( ps.max_solutions > 0 ) && ( n_solutions >= ps.max_solutions ); /* stop searching */
       return false; /* keep searching */
     };
 
