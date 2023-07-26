@@ -131,6 +131,221 @@ public:
 };
 
 template<class Ntk>
+struct xag_skew_cost_function
+{
+public:
+  using context_t = std::pair<uint32_t, uint32_t>; // <depth, skew>
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return c1 > c2;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<context_t> const& fanin_contexts = {} ) const
+  {
+    uint32_t depth = ntk.is_pi( n ) ? 0 : std::max_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) )->first + 1;
+
+    uint32_t skew = std::max_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) )->first - std::min_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) )->first;
+    return std::make_pair( depth, depth - ntk.is_and( n ) );
+  }
+
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      return;
+    }
+    else
+    {
+      total_cost += context.second;
+    }
+  }
+};
+
+template<class Ntk>
+struct xag_max_skew_cost_function
+{
+public:
+  using context_t = std::pair<uint32_t, uint32_t>; // <depth, skew>
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return c1 > c2;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<context_t> const& fanin_contexts = {} ) const
+  {
+    uint32_t depth = ntk.is_pi( n ) ? 0 : std::max_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) )->first + 1;
+
+    uint32_t skew = std::max_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) )->first - std::min_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) )->first;
+    return std::make_pair( depth, depth - ntk.is_and( n ) );
+  }
+
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      return;
+    }
+    else
+    {
+    total_cost = std::max( total_cost, context.second );
+    }
+  }
+};
+
+template<class Ntk>
+struct xag_fanout_cost_function
+{
+public:
+  using context_t = uint32_t;
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return c1 > c2;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<context_t> const& fanin_contexts = {} ) const
+  {
+    return ntk.fanout_size( n );
+  }
+
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      total_cost += context;
+    }
+    else
+    {
+      total_cost += 1;
+    }
+  }
+};
+
+template<class Ntk>
+struct xag_reconv_path_cost_function
+{
+public:
+  using context_t = std::pair< std::set<node<Ntk>>, uint32_t >;
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return c1.first.size() > c2.first.size();
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<context_t> const& fanin_contexts = {} ) const
+  {
+    if ( ntk.is_pi( n ) )
+    {
+      return std::make_pair( std::set<node<Ntk>>{ n }, 0 );
+    }
+    else
+    {
+      uint32_t num_reconv_path = 0;
+      std::set<node<Ntk>> _context;
+      for ( auto const& fanin_context : fanin_contexts )
+      {
+        for ( auto const& fanin : fanin_context.first )
+        {
+          if ( _context.find( fanin ) != _context.end() )
+          {
+            num_reconv_path++;
+          }
+          else
+          {
+            _context.insert( fanin );
+          }
+        }
+      }
+      return std::make_pair( _context, num_reconv_path );
+    }
+  }
+
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      return;
+    }
+    else
+    {
+      total_cost += context.second;
+    }
+  }
+};
+
+
+template<class Ntk>
+struct xag_fanout_cost_eval_function
+{
+public:
+  using context_t = uint32_t;
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return c1 > c2;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<context_t> const& fanin_contexts = {} ) const
+  {
+    if ( ntk.is_pi( n ) )
+    {
+      return ntk.fanout_size( n );
+    }
+
+    return ntk.fanout_size( n ) + *std::max_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) );
+  }
+
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      return;
+    }
+    else
+    {
+      total_cost = std::max( total_cost, context );
+    }
+  }
+};
+
+template<class Ntk>
+struct xag_and_chain_cost_function
+{
+public:
+  using context_t = uint32_t;
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return c1 > c2;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<context_t> const& fanin_contexts = {} ) const
+  {
+    if ( ntk.is_pi( n ) )
+    {
+      return 0;
+    }
+    else
+    {
+      if ( ntk.is_and( n ) )
+      {
+        return *std::max_element( std::begin( fanin_contexts ), std::end( fanin_contexts ) ) + 1;
+      }
+      else
+      {
+        return 0;
+      }
+    }
+  }
+
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {    
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      return;
+    }
+    total_cost = std::max( total_cost, context );
+  }
+};
+
+
+template<class Ntk>
 struct xag_t_depth_cost_function : recursive_cost_functions<Ntk>
 {
 public:
@@ -191,5 +406,60 @@ public:
     total_cost += ( !ntk.is_pi( n ) && ntk.visited( n ) != ntk.trav_id() ) ? ntk.is_and( n ) : 0;
   }
 };
+
+template<class Ntk>
+struct aig_fflc_cost_function : recursive_cost_functions<Ntk>
+{
+public:
+  using context_t = uint32_t;
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return true;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<uint32_t> const& fanin_contexts = {} ) const
+  {
+    return ntk.fanout_size( n ) > 1 ? 0 : 1;
+  }
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      total_cost += context;
+    }
+    else
+    {
+      total_cost += 1;
+    }
+  }
+};
+
+template<class Ntk>
+struct aig_fflc_cost_function_eval : recursive_cost_functions<Ntk>
+{
+public:
+  using context_t = uint32_t;
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    return true;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<uint32_t> const& fanin_contexts = {} ) const
+  {
+    return 0;
+  }
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      return; 
+    }
+    else
+    {
+      total_cost += ntk.fanout_size( n ) > 1? 2 : 1;
+    }
+  }
+};
+
 
 } /* namespace mockturtle */

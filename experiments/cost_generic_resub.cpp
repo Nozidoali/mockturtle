@@ -30,6 +30,7 @@
 #include <mockturtle/algorithms/cleanup.hpp>
 #include <mockturtle/algorithms/cut_rewriting.hpp>
 #include <mockturtle/algorithms/experimental/cost_generic_resub.hpp>
+#include <mockturtle/algorithms/experimental/window_resub.hpp>
 #include <mockturtle/algorithms/functional_reduction.hpp>
 #include <mockturtle/algorithms/node_resynthesis/xag_minmc2.hpp>
 #include <mockturtle/io/aiger_reader.hpp>
@@ -45,10 +46,11 @@ int main()
   using namespace experiments;
 
   /* run the actual experiments */
-  experiment<std::string, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, uint32_t, float, float, bool> exp( "cost_generic_resub", "benchmark", "c1", "c2", "c3", "c4", "_c1", "_c2", "_c3", "_c4", "runtime", "impr %", "cec" );
+  experiment<std::string, uint32_t, uint32_t, float, float, bool> exp( "cost_generic_resub", "benchmark", "before", "after", "runtime", "impr %", "cec" );
 
   std::vector<std::string> bugs{ "bug" };
-  for ( auto const& benchmark : epfl_benchmarks() )
+  // for ( auto const& benchmark : epfl_benchmarks() )
+  for ( auto const& benchmark : iwls_benchmarks() )
   // for ( auto const& benchmark : bugs )
   {
     float run_time = 0;
@@ -69,10 +71,7 @@ int main()
     auto costfn = costfn_3;
 
     /* the costs before optimization */
-    auto c1 = cost_view( xag, costfn_1 ).get_cost();
-    auto c2 = cost_view( xag, costfn_2 ).get_cost();
-    auto c3 = cost_view( xag, costfn_3 ).get_cost();
-    auto c4 = cost_view( xag, costfn_4 ).get_cost();
+    int cost_before = cost_view( xag, costfn ).get_cost();
 
     cost_generic_resub_params ps;
     cost_generic_resub_stats st;
@@ -84,23 +83,34 @@ int main()
 
     future::xag_minmc_resynthesis resyn;
     call_with_stopwatch( time_tot, [&]() {
+
       cost_generic_resub( xag, costfn, ps, &st );
+
+      window_resub_params wps;
+      wps.wps.max_inserts = 3;
+      // window_xag_heuristic_resub( xag, wps );
+
+      // xag = balancing( xag, { sop_rebalancing<xag_network>{} } );
+      // xag = balancing( xag, { esop_rebalancing<xag_network>{} } );
+
+      // cut_rewriting_params cps;
+      // cps.cut_enumeration_ps.cut_size = 4;
+      // xag = cut_rewriting<xag_network, decltype( resyn ), mc_cost<xag_network>>( xag, resyn, cps, nullptr );
+
+
       xag = cleanup_dangling( xag );
     } );
 
-    run_time = to_seconds( time_tot );
+    run_time = 1000 * to_seconds( time_tot );
 
     /* the costs after optimization */
-    auto _c1 = cost_view( xag, costfn_1 ).get_cost();
-    auto _c2 = cost_view( xag, costfn_2 ).get_cost();
-    auto _c3 = cost_view( xag, costfn_3 ).get_cost();
-    auto _c4 = cost_view( xag, costfn_4 ).get_cost();
+    int cost_after = cost_view( xag, costfn ).get_cost();
 
-    float impr = (float)( c3 - _c3 ) / (float)c3 * 100.0f;
+    float impr = (float)( cost_before - cost_after ) / (float)cost_before * 100.0f;
 
     auto cec = true;
     cec = benchmark == "hyp" ? true : abc_cec( xag, benchmark );
-    exp( benchmark, c1, c2, c3, c4, _c1, _c2, _c3, _c4, run_time, impr, cec );
+    exp( benchmark, cost_before, cost_after, run_time, impr, cec );
   }
   exp.save();
   exp.table();

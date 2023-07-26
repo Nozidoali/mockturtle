@@ -45,7 +45,18 @@
 namespace mockturtle::experimental
 {
 
-template<class Ntk, class TT, class iterator_type, class truth_table_storage_type>
+struct cost_generic_resub_functor_static_params
+{
+
+  /*! \brief Whether to consider single XOR gates (i.e., using XAGs instead of AIGs). */
+  static constexpr bool use_xor{ true };
+
+
+  /*! \brief Whether to consider single XOR gates (i.e., using XAGs instead of AIGs). */
+  static constexpr bool use_commutative{ true };
+};
+
+template<class Ntk, class TT, class iterator_type, class truth_table_storage_type, class static_params = cost_generic_resub_functor_static_params>
 class cost_generic_resub_functor
 {
 public:
@@ -632,6 +643,7 @@ private:
               if ( !push_solution( il ) )
                 return std::nullopt;
             }
+            if constexpr ( static_params::use_commutative )
             {
               index_list_t il;
               il.clear();
@@ -642,6 +654,7 @@ private:
               if ( !push_solution( il ) )
                 return std::nullopt;
             }
+            if constexpr ( static_params::use_commutative )
             {
               index_list_t il;
               il.clear();
@@ -703,6 +716,7 @@ private:
               if ( !push_solution( il ) )
                 return std::nullopt;
             }
+            if constexpr ( static_params::use_commutative )
             {
               index_list_t il;
               il.clear();
@@ -713,6 +727,7 @@ private:
               if ( !push_solution( il ) )
                 return std::nullopt;
             }
+            if constexpr ( static_params::use_commutative )
             {
               index_list_t il;
               il.clear();
@@ -771,6 +786,7 @@ private:
           }
 
           // commutative
+          if constexpr ( static_params::use_commutative )
           {
             il.clear();
             il.add_inputs( num_divisors - 1 );
@@ -782,6 +798,7 @@ private:
           }
 
           // commutative
+          if constexpr ( static_params::use_commutative )
           {
             il.clear();
             il.add_inputs( num_divisors - 1 );
@@ -810,6 +827,7 @@ private:
           }
 
           // commutative
+          if constexpr ( static_params::use_commutative )
           {
             il.clear();
             il.add_inputs( num_divisors - 1 );
@@ -821,6 +839,7 @@ private:
           }
 
           // commutative
+          if constexpr ( static_params::use_commutative )
           {
             il.clear();
             il.add_inputs( num_divisors - 1 );
@@ -1087,21 +1106,33 @@ public:
     candidates.clear();
     fns.clear();
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_wire(); }, 0 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor(); }, 1 );
+    
+    if constexpr ( static_params::use_xor )
+    {
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor(); }, 1 );
+    }
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and(); }, 1 );
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_or(); }, 1 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_xor(); }, 2 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_and(); }, 2 );
+
+    if constexpr ( static_params::use_xor )
+    {
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_xor(); }, 2 );
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_and(); }, 2 );
+    }
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_and(); }, 2 );
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_or(); }, 2 );
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_or_or(); }, 2 );
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_or_and(); }, 2 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_xor(); }, 2 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_and_and(); }, 3 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_xor_and(); }, 3 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_xor_xor(); }, 3 ); // bad efficiency / gain trade-off
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_xor_xor(); }, 3 );
-    fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_and_xor(); }, 3 );
+    
+    if constexpr ( static_params::use_xor )
+    {
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_xor(); }, 2 );
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_and_and(); }, 3 );
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_xor_and(); }, 3 );
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_xor_xor_xor(); }, 3 ); // bad efficiency / gain trade-off
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_xor_xor(); }, 3 );
+      fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_and_xor(); }, 3 );
+    }
     fns.emplace_back( []( cost_generic_resub_functor* _core ) { _core->find_and_and_and(); }, 3 );
   }
 

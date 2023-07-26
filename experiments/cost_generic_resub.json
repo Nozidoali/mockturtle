@@ -548,5 +548,226 @@
       }
     ],
     "version": "5af8dc0"
+  },
+  {
+    "entries": [
+      {
+        "after": 10497,
+        "before": 14268,
+        "benchmark": "ac97_ctrl",
+        "cec": true,
+        "impr %": 26.429771423339844,
+        "runtime": 3258.95556640625
+      },
+      {
+        "after": 12729,
+        "before": 21522,
+        "benchmark": "aes_core",
+        "cec": true,
+        "impr %": 40.85586929321289,
+        "runtime": 69839.0859375
+      },
+      {
+        "after": 3304,
+        "before": 4857,
+        "benchmark": "des_area",
+        "cec": true,
+        "impr %": 31.974470138549805,
+        "runtime": 5002.1494140625
+      },
+      {
+        "after": 48126,
+        "before": 82650,
+        "benchmark": "des_perf",
+        "cec": true,
+        "impr %": 41.771324157714844,
+        "runtime": 122265.9296875
+      },
+      {
+        "after": 17677,
+        "before": 24393,
+        "benchmark": "DMA",
+        "cec": true,
+        "impr %": 27.532487869262695,
+        "runtime": 10554.361328125
+      },
+      {
+        "after": 32135,
+        "before": 45420,
+        "benchmark": "DSP",
+        "cec": true,
+        "impr %": 29.249229431152344,
+        "runtime": 42696.07421875
+      },
+      {
+        "after": 73266,
+        "before": 86726,
+        "benchmark": "ethernet",
+        "cec": true,
+        "impr %": 15.520143508911133,
+        "runtime": 207919.03125
+      },
+      {
+        "after": 815,
+        "before": 1166,
+        "benchmark": "iwls05_i2c",
+        "cec": true,
+        "impr %": 30.102914810180664,
+        "runtime": 298.3412170410156
+      },
+      {
+        "after": 621034,
+        "before": 789647,
+        "benchmark": "leon2",
+        "cec": true,
+        "impr %": 21.35295867919922,
+        "runtime": 912285.375
+      },
+      {
+        "after": 755358,
+        "before": 974977,
+        "benchmark": "leon3_opt",
+        "cec": true,
+        "impr %": 22.525556564331055,
+        "runtime": 1690257.75
+      },
+      {
+        "after": 872463,
+        "before": 1088122,
+        "benchmark": "leon3",
+        "cec": true,
+        "impr %": 19.819377899169922,
+        "runtime": 2234385.0
+      },
+      {
+        "after": 506049,
+        "before": 652353,
+        "benchmark": "leon3mp",
+        "cec": true,
+        "impr %": 22.427120208740234,
+        "runtime": 1635620.125
+      },
+      {
+        "after": 11660,
+        "before": 15337,
+        "benchmark": "iwls05_mem_ctrl",
+        "cec": true,
+        "impr %": 23.974700927734375,
+        "runtime": 4466.2333984375
+      },
+      {
+        "after": 691945,
+        "before": 803848,
+        "benchmark": "netcard",
+        "cec": true,
+        "impr %": 13.920915603637695,
+        "runtime": 1566594.375
+      },
+      {
+        "after": 17076,
+        "before": 22806,
+        "benchmark": "pci_bridge32",
+        "cec": true,
+        "impr %": 25.124967575073242,
+        "runtime": 20300.271484375
+      },
+      {
+        "after": 52424,
+        "before": 75613,
+        "benchmark": "RISC",
+        "cec": true,
+        "impr %": 30.668004989624023,
+        "runtime": 22450.896484375
+      },
+      {
+        "after": 531,
+        "before": 773,
+        "benchmark": "sasc",
+        "cec": true,
+        "impr %": 31.306596755981445,
+        "runtime": 118.51004028320313
+      },
+      {
+        "after": 735,
+        "before": 1053,
+        "benchmark": "simple_spi",
+        "cec": true,
+        "impr %": 30.19942855834961,
+        "runtime": 190.2183380126953
+      },
+      {
+        "after": 2984,
+        "before": 3808,
+        "benchmark": "spi",
+        "cec": true,
+        "impr %": 21.638656616210938,
+        "runtime": 2673.521240234375
+      },
+      {
+        "after": 262,
+        "before": 405,
+        "benchmark": "ss_pcm",
+        "cec": true,
+        "impr %": 35.30863952636719,
+        "runtime": 55.19868850708008
+      },
+      {
+        "after": 8237,
+        "before": 12384,
+        "benchmark": "systemcaes",
+        "cec": true,
+        "impr %": 33.48675537109375,
+        "runtime": 6981.65625
+      },
+      {
+        "after": 1838,
+        "before": 2999,
+        "benchmark": "systemcdes",
+        "cec": true,
+        "impr %": 38.7129020690918,
+        "runtime": 2469.71142578125
+      },
+      {
+        "after": 7242,
+        "before": 9647,
+        "benchmark": "tv80",
+        "cec": true,
+        "impr %": 24.930030822753906,
+        "runtime": 8984.306640625
+      },
+      {
+        "after": 10903,
+        "before": 15894,
+        "benchmark": "usb_funct",
+        "cec": true,
+        "impr %": 31.40178680419922,
+        "runtime": 4742.75390625
+      },
+      {
+        "after": 282,
+        "before": 460,
+        "benchmark": "usb_phy",
+        "cec": true,
+        "impr %": 38.69565200805664,
+        "runtime": 93.382080078125
+      },
+      {
+        "after": 104610,
+        "before": 126708,
+        "benchmark": "vga_lcd",
+        "cec": true,
+        "impr %": 17.44009780883789,
+        "runtime": 240115.046875
+      },
+      {
+        "after": 37045,
+        "before": 47853,
+        "benchmark": "wb_conmax",
+        "cec": true,
+        "impr %": 22.58583641052246,
+        "runtime": 40433.9375
+      }
+    ],
+    "version": "8089fef"
   }
 ]

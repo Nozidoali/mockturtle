@@ -48,7 +48,15 @@
 namespace mockturtle::experimental
 {
 
-template<class Ntk, class TT>
+struct cost_generic_refactor_functor_static_params
+{
+
+  /*! \brief Whether to consider single XOR gates (i.e., using XAGs instead of AIGs). */
+  static constexpr bool use_xor{ true };
+
+};
+
+template<class Ntk, class TT, class static_params = cost_generic_refactor_functor_static_params>
 class cost_generic_refactor_functor
 {
 public:
@@ -84,8 +92,10 @@ public:
       std::vector<signal> leaves( cut->size() );
       std::transform( cut->begin(), cut->end(), std::begin( leaves ), [&]( auto leaf ) { return ntk.make_signal( ntk.index_to_node( leaf ) ); } );
       assert( leaves.size() == tt.num_vars() );
-      auto const s = create_esop_function( ntk, tt, leaves );
-      evalfn( s );
+      if constexpr ( static_params::use_xor ) {
+        auto const s = create_esop_function( ntk, tt, leaves );
+        evalfn( s );
+      }
       auto const _s = create_sop_function( ntk, tt, leaves );
       evalfn( _s );
     }
