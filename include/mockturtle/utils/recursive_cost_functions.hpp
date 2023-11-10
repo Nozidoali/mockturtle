@@ -273,6 +273,60 @@ public:
 
 
 template<class Ntk>
+struct xag_rare_signal_cost
+{
+public:
+  const double threshold = 0.1;
+  using context_t = std::pair< double, uint32_t >;
+  // first: the zero probably of the node
+  // second: the cost contribution to the total cost
+  static bool context_compare( const context_t& c1, const context_t& c2 )
+  {
+    // priority in the balancing
+    return c1.first > c2.first;
+  }
+
+  context_t operator()( Ntk const& ntk, node<Ntk> const& n, std::vector<context_t> const& fanin_contexts = {} ) const
+  {
+    if ( ntk.is_pi( n ) )
+    {
+      return std::make_pair( 0.5, 0 );
+    }
+    else
+    {
+      double zero_prob = 1.0f;
+    
+      // might be problematic
+      ntk.foreach_fanin( n, [&]( auto const& f, auto i ) {
+        if ( ntk.is_complemented( f ) )
+        {
+          zero_prob *= ( 1 - fanin_contexts[i].first );
+        }
+        else
+        {
+          zero_prob *= fanin_contexts[i].first;
+        }
+      } );
+      uint32_t is_rare_signal = zero_prob <= threshold ? 1 : zero_prob >= 1 - threshold ? 1 : 0;
+      return std::make_pair( zero_prob, is_rare_signal );
+    }
+  }
+
+  void operator()( Ntk const& ntk, node<Ntk> const& n, uint32_t& total_cost, context_t const context ) const
+  {
+    if ( ntk.is_pi( n ) || ntk.visited( n ) == ntk.trav_id() )
+    {
+      return;
+    }
+    else
+    {
+      total_cost += context.second;
+    }
+  }
+};
+
+
+template<class Ntk>
 struct xag_fanout_cost_eval_function
 {
 public:

@@ -119,7 +119,6 @@ public:
   using node = typename Ntk::node;
   using context_t = typename Ntk::context_t;
   using index_list_t = large_xag_index_list;
-  ;
 
 public:
   explicit cost_generic_resyn( Ntk const& ntk, params const& ps, stats& st ) noexcept

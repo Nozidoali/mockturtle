@@ -49,7 +49,7 @@ struct cost_generic_resub_functor_static_params
 {
 
   /*! \brief Whether to consider single XOR gates (i.e., using XAGs instead of AIGs). */
-  static constexpr bool use_xor{ true };
+  static constexpr bool use_xor{ false };
 
 
   /*! \brief Whether to consider single XOR gates (i.e., using XAGs instead of AIGs). */
