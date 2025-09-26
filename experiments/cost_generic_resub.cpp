@@ -81,22 +81,12 @@ int main()
 
     stopwatch<>::duration time_tot{ 0 };
 
-    future::xag_minmc_resynthesis resyn;
     call_with_stopwatch( time_tot, [&]() {
 
       cost_generic_resub( xag, costfn, ps, &st );
 
       window_resub_params wps;
       wps.wps.max_inserts = 3;
-      // window_xag_heuristic_resub( xag, wps );
-
-      // xag = balancing( xag, { sop_rebalancing<xag_network>{} } );
-      // xag = balancing( xag, { esop_rebalancing<xag_network>{} } );
-
-      // cut_rewriting_params cps;
-      // cps.cut_enumeration_ps.cut_size = 4;
-      // xag = cut_rewriting<xag_network, decltype( resyn ), mc_cost<xag_network>>( xag, resyn, cps, nullptr );
-
 
       xag = cleanup_dangling( xag );
     } );

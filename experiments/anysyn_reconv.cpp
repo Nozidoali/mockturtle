@@ -101,7 +101,8 @@ int main(int argc, char ** argv)
     /* the cost functions for evalution */
     auto costfn_1 = xag_size_cost_function<aig_network>();
     auto costfn_2 = xag_depth_cost_function<aig_network>();
-    auto costfn_3 = xag_rare_signal_cost<aig_network>();
+    auto costfn_3 = xag_multiplicative_complexity_cost_function<aig_network>();
+    // 
     // auto costfn_3 = xag_depth_cost_function<aig_network>();
     
     
@@ -116,7 +117,7 @@ int main(int argc, char ** argv)
     cost_generic_resub_params ps;
     cost_generic_resub_stats st;
     ps.verbose = false;
-    ps.rps.use_esop = false;
+    ps.rps.use_esop = true;
     ps.rps.max_solutions = 0; /* = 1: collect one, =0: collect all */
 
     stopwatch<>::duration time_tot{ 0 };
@@ -208,6 +209,8 @@ int main(int argc, char ** argv)
     int _c1 = cost_view( aig, costfn_1 ).get_cost();
     int _c2 = cost_view( aig, costfn_2 ).get_cost();
     int _c3 = cost_view( aig, costfn_3 ).get_cost();
+
+    fmt::print( "num_ands = {}\n", _c3 );
 
     fmt::print( "[i] Area: {} -> {}, Depth: {} -> {}, Rare Signal: {} -> {}\n", c1, _c1, c2, _c2, c3, _c3 );
 

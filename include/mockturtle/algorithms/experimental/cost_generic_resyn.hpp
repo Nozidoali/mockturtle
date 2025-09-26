@@ -225,6 +225,13 @@ public:
       refactor_engine( forest, evalfn );
     }
 
+    /* external database look up (IWLS'25) */
+    if ( true ) 
+    {
+      kitty::print_binary( tt_po );
+      fmt::print("\nwaiting for external database...\n");
+    }
+
     /* grow the forest */
     cost_generic_resub_functor engine( forest, tt_po, ~kitty::create<TT>( forest.num_pis() ), std::begin( pis ), std::end( pis ), ntts );
     engine.run( evalfn );
