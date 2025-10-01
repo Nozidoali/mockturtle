@@ -28,4 +28,9 @@ foreach(filename ${FILENAMES})
   get_filename_component(basename ${filename} NAME_WE)
   add_executable(${basename} ${filename})
   target_link_libraries(${basename} PUBLIC experiments mockturtle)
+  
+  # Link with extracted NPN library for our custom experiment
+  if(${basename} STREQUAL "cut_rewriting_npn_experiment")
+    target_link_libraries(${basename} PUBLIC mockturtle_extracted)
+  endif()
 endforeach()

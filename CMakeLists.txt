@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.20)
 project(mockturtle LANGUAGES CXX)
 
 set(MOCKTURTLE_CXX_STANDARD "17" CACHE STRING "C++ standard")
@@ -6,9 +6,9 @@ set(CMAKE_CXX_STANDARD ${MOCKTURTLE_CXX_STANDARD})
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Options
-option(MOCKTURTLE_BUILD_EXAMPLES "Build mockturtle examples" ON)
+option(MOCKTURTLE_BUILD_EXAMPLES "Build mockturtle examples" OFF)
 option(MOCKTURTLE_BUILD_TESTS "Build mockturtle tests" OFF)
-option(MOCKTURTLE_BUILD_EXPERIMENTS "Build mockturtle experiments" OFF)
+option(MOCKTURTLE_BUILD_EXPERIMENTS "Build mockturtle experiments" ON)
 option(BILL_Z3 "Enable Z3 interface for bill library" OFF)
 option(MOCKTURTLE_ENABLE_COVERAGE "Enable coverage reporting for gcc/clang" OFF)
 option(MOCKTURTLE_ENABLE_MATPLOTLIB "Enable matplotlib library in experiments" OFF)
@@ -44,6 +44,7 @@ endif()
 
 add_subdirectory(include)
 add_subdirectory(lib)
+add_subdirectory(src)
 
 if(MOCKTURTLE_ENABLE_NAUTY)
   add_definitions(-DMOCKTURTLE_ENABLE_NAUTY)
