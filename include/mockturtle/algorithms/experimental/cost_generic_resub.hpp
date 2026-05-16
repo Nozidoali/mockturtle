@@ -153,6 +153,7 @@ struct cost_aware_problem
 {
   using node = typename Ntk::node;
   using signal = typename Ntk::signal;
+  using context_t = typename Ntk::context_t;
 
   signal root;
   std::vector<signal> divs;
@@ -162,6 +163,9 @@ struct cost_aware_problem
   TT care;
   uint32_t mffc_size;
   uint32_t max_cost{ std::numeric_limits<uint32_t>::max() };
+  context_t pivot_context{}; /* context of the pivot node; passed to engine so
+                                 stateful cost functions can derive forest-internal
+                                 attributes (e.g. die label) from it */
 };
 
 template<class Ntk, class TT = kitty::dynamic_truth_table>
@@ -252,6 +256,11 @@ public:
 
     /* compute cost */
     win.max_cost = ntk.get_cost( n, win.divs );
+
+    /* snapshot the pivot's context so the engine can derive forest-internal
+       attributes (e.g. die label) without relying on side-channels through
+       the cost function's evaluation order. */
+    win.pivot_context = ntk.get_context( n );
 
     st.num_windows++;
     st.num_leaves += leaves.size();
@@ -371,7 +380,7 @@ public:
 
   std::optional<res_t> operator()( problem_t& prob )
   {
-    return engine( prob.tts.back(), prob.care, prob.divs, std::begin( prob.div_ids ), std::end( prob.div_ids ), prob.tts, prob.max_cost );
+    return engine( prob.tts.back(), prob.care, prob.divs, std::begin( prob.div_ids ), std::end( prob.div_ids ), prob.tts, prob.max_cost, prob.pivot_context );
   }
 
 private:

@@ -49,6 +49,21 @@
 namespace mockturtle::experimental
 {
 
+namespace detail
+{
+/* SFINAE: cost_fn.on_pivot(ctx) — invoked once per resub problem so that
+   stateful cost functions can capture the current pivot's context (e.g. its
+   die label) before the forest enumeration starts. */
+template<class Fn, class CtxT, class = void>
+struct cost_fn_has_on_pivot : std::false_type {};
+
+template<class Fn, class CtxT>
+struct cost_fn_has_on_pivot<Fn, CtxT,
+    std::void_t<decltype( std::declval<Fn const&>().on_pivot(
+        std::declval<CtxT const&>() ) )>> : std::true_type {};
+} /* namespace detail */
+
+
 struct cost_resyn_params
 {
   /* maximum number of feasible solutions to collect */
@@ -1204,7 +1219,7 @@ public:
   }
 
   template<class iterator_type, class truth_table_storage_type>
-  std::optional<index_list_t> operator()( TT const& target, TT const& care, std::vector<signal> const& divs, iterator_type begin, iterator_type end, truth_table_storage_type const& tts, uint32_t max_cost = std::numeric_limits<uint32_t>::max() )
+  std::optional<index_list_t> operator()( TT const& target, TT const& care, std::vector<signal> const& divs, iterator_type begin, iterator_type end, truth_table_storage_type const& tts, uint32_t max_cost = std::numeric_limits<uint32_t>::max(), context_t const& pivot_ctx = context_t{} )
   {
     ptts = &tts;
     on_off_sets[0] = ~target & care;
@@ -1220,8 +1235,28 @@ public:
     best_cost = max_cost;
     prepare_clear();
 
-    // prepare solution forest
-    Ntk forest; // create an empty network
+    /* Notify the source cost function of the current pivot's context (e.g. its
+       die label). Stateful cost functions opt in by defining an `on_pivot`
+       method; legacy cost functions are silently skipped. */
+    using cost_fn_t = std::decay_t<decltype( ntk.get_cost_fn() )>;
+    if constexpr ( detail::cost_fn_has_on_pivot<cost_fn_t, context_t>::value )
+    {
+      ntk.get_cost_fn().on_pivot( pivot_ctx );
+    }
+
+    /* Inherit the source's cost function so that any state set on the source
+       (lookup callbacks, pivot info, etc.) is visible to the forest. Without
+       this the forest's cost_view would be default-constructed and stateful
+       cost functions would silently lose their state.
+
+       `is_main = false` marks this view as a disposable solution forest so
+       stateful cost functions can skip side-effects (e.g. don't persist die
+       labels for forest-internal nodes back to the user-side maps). */
+    Ntk forest( ntk.get_cost_fn(), /*is_main=*/false );
+    if constexpr ( detail::cost_fn_has_on_pivot<cost_fn_t, context_t>::value )
+    {
+      forest.get_cost_fn().on_pivot( pivot_ctx );
+    }
 
     for ( signal div : divs )
     {

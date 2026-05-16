@@ -39,10 +39,28 @@
 #include "immutable_view.hpp"
 
 #include <cstdint>
+#include <type_traits>
 #include <vector>
 
 namespace mockturtle
 {
+
+namespace detail
+{
+/* SFINAE: cost_fn.on_add(ntk, n, context) — invoked after each node addition
+   so that stateful cost functions can persist auxiliary attributes (die label,
+   slack, ...) keyed by the new node id. */
+template<class Fn, class Ntk, class CtxT, class = void>
+struct cost_fn_has_on_add : std::false_type {};
+
+template<class Fn, class Ntk, class CtxT>
+struct cost_fn_has_on_add<Fn, Ntk, CtxT,
+    std::void_t<decltype( std::declval<Fn&>().on_add(
+        std::declval<Ntk const&>(),
+        std::declval<typename Ntk::node const&>(),
+        std::declval<CtxT const&>() ) )>> : std::true_type {};
+} /* namespace detail */
+
 
 /*! \brief Implements `get_cost` methods for networks.
  *
@@ -83,10 +101,11 @@ public:
   using signal = typename Ntk::signal;
   using context_t = typename RecCostFn::context_t;
 
-  explicit cost_view( RecCostFn const& cost_fn = {} )
+  explicit cost_view( RecCostFn const& cost_fn = {}, bool is_main = true )
       : Ntk(),
         _cost_fn( cost_fn ),
-        context( *this )
+        context( *this ),
+        _is_main( is_main )
   {
     static_assert( is_network_type_v<Ntk>, "Ntk is not a network type" );
     static_assert( has_size_v<Ntk>, "Ntk does not implement the size method" );
@@ -98,10 +117,11 @@ public:
     add_event = Ntk::events().register_add_event( [this]( auto const& n ) { on_add( n ); } );
   }
 
-  explicit cost_view( Ntk const& ntk, RecCostFn const& cost_fn = {} )
+  explicit cost_view( Ntk const& ntk, RecCostFn const& cost_fn = {}, bool is_main = true )
       : Ntk( ntk ),
         _cost_fn( cost_fn ),
-        context( ntk )
+        context( ntk ),
+        _is_main( is_main )
   {
     static_assert( is_network_type_v<Ntk>, "Ntk is not a network type" );
     static_assert( has_size_v<Ntk>, "Ntk does not implement the size method" );
@@ -117,7 +137,8 @@ public:
   explicit cost_view( cost_view<Ntk, RecCostFn> const& other )
       : Ntk( other ),
         _cost_fn( other._cost_fn ),
-        context( other.context )
+        context( other.context ),
+        _is_main( other._is_main )
   {
     add_event = Ntk::events().register_add_event( [this]( auto const& n ) { on_add( n ); } );
   }
@@ -134,6 +155,7 @@ public:
     /* copy */
     context = other.context;
     _cost_fn = other._cost_fn;
+    _is_main = other._is_main;
 
     add_event = Ntk::events().register_add_event( [this]( auto const& n ) { on_add( n ); } );
 
@@ -144,6 +166,27 @@ public:
   {
     Ntk::events().release_add_event( add_event );
   }
+
+  /*! \brief Returns the cost function instance (const access). */
+  RecCostFn const& get_cost_fn() const { return _cost_fn; }
+
+  /*! \brief Returns the cost function instance (mutable access).
+   *
+   * Exposed so callers can install per-problem state (e.g. a pivot context
+   * pushed before each resub problem). Resynthesis engines also use this to
+   * carry the same cost function over to internal solution forests so that
+   * stateful cost functions are not silently re-default-constructed.
+   */
+  RecCostFn& get_cost_fn() { return _cost_fn; }
+
+  /*! \brief Whether this view wraps the main optimization target.
+   *
+   * Resynthesis engines build internal solution forests as cost_views with
+   * `is_main = false`, so that stateful cost functions can distinguish
+   * "real" nodes (write through to user-side maps) from disposable forest
+   * nodes (transient, no write-back).
+   */
+  bool is_main() const { return _is_main; }
 
   /*! \brief Returns the context of node n */
   context_t get_context( node const& n ) const
@@ -204,6 +247,17 @@ public:
     } );
     context[n] = _cost_fn( *this, n, fanin_costs );
     _cost_fn( *this, n, _cost, context[n] );
+
+    /* Stateful cost functions may persist auxiliary attributes for the new
+       node here (e.g. write the die label into a user-supplied node_map).
+       Only fired for the main optimization target — disposable solution
+       forests (is_main == false) skip this so user-side maps aren't polluted
+       with forest-internal node ids. */
+    if constexpr ( detail::cost_fn_has_on_add<RecCostFn, Ntk, context_t>::value )
+    {
+      if ( _is_main )
+        _cost_fn.on_add( *this, n, context[n] );
+    }
   }
 
   /*! \brief Creates a PI with context assigned */
@@ -268,6 +322,7 @@ private:
   node_map<context_t, Ntk> context;
   uint32_t _cost;
   RecCostFn _cost_fn;
+  bool _is_main{ true };
 
   std::shared_ptr<typename network_events<Ntk>::add_event_type> add_event;
 };
